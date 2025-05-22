@@ -4,50 +4,98 @@
   <meta charset="UTF-8" />
   <title>Vinod Kumar Choudhary - Portfolio</title>
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa, #ffffff);
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
       scroll-behavior: smooth;
     }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #f0f4f8, #ffffff);
+      color: #333;
+    }
     header {
-      text-align: center;
-      padding: 20px 0;
       background-color: #1f3c88;
       color: white;
+      padding: 20px;
+      text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s ease-in-out;
     }
     header h1 {
       margin: 0;
       font-size: 1.8em;
-      font-weight: 500;
+      font-weight: 600;
+      animation: fadeIn 1s ease-in-out;
     }
-    nav {
-      margin-top: 10px;
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
     }
-    nav button {
-      margin: 5px;
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: #1f3c88;
+      position: absolute;
+      top: 70px;
+      right: 20px;
+      border-radius: 10px;
       padding: 10px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .nav-links button {
+      margin: 10px 0;
+      padding: 10px 22px;
       border: none;
-      border-radius: 5px;
-      background-color: #fff;
+      border-radius: 25px;
+      background-color: white;
       color: #1f3c88;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, background-color 0.3s;
     }
-    nav button:hover {
-      background-color: #e6ebff;
+
+    .nav-links button:hover {
+      background-color: #dce4ff;
+      transform: scale(1.05);
     }
+
     section {
-      padding: 40px 20px;
+      padding: 50px 20px;
       max-width: 900px;
       margin: auto;
+      animation: fadeIn 0.8s ease;
     }
+
     .intro {
       display: flex;
       align-items: center;
@@ -56,6 +104,7 @@
       gap: 30px;
       padding-top: 60px;
     }
+
     .intro img {
       width: 130px;
       height: 130px;
@@ -64,44 +113,54 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       transition: transform 0.3s ease;
     }
+
     .intro img:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
+
     .intro-text h2 {
       font-size: 2em;
       color: #1f3c88;
       margin: 0;
     }
+
     .intro-text p {
       font-size: 1.1em;
-      color: #666;
+      color: #555;
     }
+
     .section-title {
       font-size: 1.5em;
       margin-bottom: 20px;
       color: #1f3c88;
-      border-left: 4px solid #1f3c88;
-      padding-left: 10px;
+      border-left: 5px solid #1f3c88;
+      padding-left: 15px;
+      font-weight: 600;
     }
+
     .external-btn a {
       display: inline-block;
       text-decoration: none;
       padding: 10px 18px;
       background-color: #1f3c88;
       color: white;
-      border-radius: 6px;
+      border-radius: 30px;
       font-weight: 500;
       margin-top: 20px;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
+
     .external-btn a:hover {
-      background-color: #153067;
+      background-color: #162f6a;
+      transform: translateY(-2px);
     }
+
     .social-icons {
       display: flex;
       gap: 15px;
       margin-top: 15px;
     }
+
     .social-icons a img {
       width: 30px;
       height: 30px;
@@ -109,44 +168,71 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s;
     }
+
     .social-icons a img:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
+
     .video {
       margin-top: 20px;
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
+
     .video iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      border-radius: 12px;
     }
+
     footer {
       background-color: #f0f0f0;
       padding: 20px;
       text-align: center;
       font-size: 0.9em;
       color: #777;
+      margin-top: 40px;
     }
+
     #map {
       height: 400px;
       width: 100%;
       margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    @keyframes fadeIn {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Vinod Kumar Choudhary</h1>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
       <button onclick="document.getElementById('about').scrollIntoView()">About</button>
       <button onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
-    </nav>
+      <button onclick="document.getElementById('location').scrollIntoView()">Location</button>
+    </div>
   </header>
 
   <section class="intro">
@@ -160,7 +246,7 @@
   <section id="about">
     <div class="section-title">Professional Summary</div>
     <p>
-      Passionate Computer Science student with a strong foundation in Data Structures and Algorithms (DSA) and a curiosity
+      Passionate Computer Science student with a strong foundation in Data Structures and Algorithms (DSA) and a curiosity 
       for exploring new technologies. Enthusiastic about problem-solving, software development, and continuous learning.
     </p>
     <div class="external-btn">
@@ -195,18 +281,26 @@
   <section>
     <div class="section-title">Video Introduction</div>
     <div class="video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/pVR7xKpkI8s?si=85LT39kXYlTeXcjn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/pVR7xKpkI8s?si=85LT39kXYlTeXcjn" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </section>
 
-  <h3 style="text-align:center;">My Location: Palghar, Maharashtra</h3>
-  <div id="map"></div>
+  <section id="location">
+    <div class="section-title">My Location</div>
+    <div id="map"></div>
+  </section>
 
   <footer>
     &copy; 2025 Vinod Kumar Choudhary
   </footer>
 
   <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('show');
+    }
+
     function initMap() {
       var palghar = { lat: 19.6969, lng: 72.7654 };
       var map = new google.maps.Map(document.getElementById('map'), {
